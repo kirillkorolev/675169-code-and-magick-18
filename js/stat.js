@@ -56,7 +56,6 @@ window.renderStatistics = function (ctx, players, times) {
     if (players[i] === 'Вы') {
       ctx.fillStyle = 'rgba(255, 0, 0, 1)';
     } else {
-      ctx.fillStyle = 'hsl(240,100%,50%)';
       ctx.fillStyle = 'hsl(240,' + getRandomIntInclusive(0, 100) + '%,50%)';
     }
 
@@ -68,8 +67,6 @@ window.renderStatistics = function (ctx, players, times) {
     );
 
     ctx.fillStyle = '#000';
-    ctx.font = '16px PT Mono';
-    ctx.textBaseline = 'hanging';
 
     ctx.fillText(
         players[i],
