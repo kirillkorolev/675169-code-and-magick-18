@@ -33,8 +33,12 @@ var COAT_COLORS = [
 
 var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
 
-var getRandomNumber = function (arr) {
-  return Math.floor(Math.random() * arr.length);
+var getRandomNumber = function (number) {
+  return Math.floor(Math.random() * number);
+};
+
+var getRandomElement = function (arr) {
+  return getRandomNumber(arr.length);
 };
 
 var menu = document.querySelector('.setup');
@@ -45,10 +49,10 @@ var similarListElement = menu.querySelector('.setup-similar-list');
 var getWizards = function (arr) {
   for (var i = 0; i < 4; i++) {
     var wizard = {
-      name: WIZARD_NAMES[getRandomNumber(WIZARD_NAMES)],
-      surname: WIZARD_SURNAMES[getRandomNumber(WIZARD_SURNAMES)],
-      coat: COAT_COLORS[getRandomNumber(COAT_COLORS)],
-      eye: EYES_COLORS[getRandomNumber(EYES_COLORS)]
+      name: WIZARD_NAMES[getRandomElement(WIZARD_NAMES)],
+      surname: WIZARD_SURNAMES[getRandomElement(WIZARD_SURNAMES)],
+      coat: COAT_COLORS[getRandomElement(COAT_COLORS)],
+      eye: EYES_COLORS[getRandomElement(EYES_COLORS)]
     };
 
     arr[i] = wizard;
