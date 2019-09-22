@@ -38,7 +38,7 @@ var getRandomNumber = function (number) {
 };
 
 var getRandomElement = function (arr) {
-  return getRandomNumber(arr.length);
+  return arr[getRandomNumber(arr.length)];
 };
 
 var menu = document.querySelector('.setup');
@@ -49,10 +49,10 @@ var similarListElement = menu.querySelector('.setup-similar-list');
 var getWizards = function (arr) {
   for (var i = 0; i < 4; i++) {
     var wizard = {
-      name: WIZARD_NAMES[getRandomElement(WIZARD_NAMES)],
-      surname: WIZARD_SURNAMES[getRandomElement(WIZARD_SURNAMES)],
-      coat: COAT_COLORS[getRandomElement(COAT_COLORS)],
-      eye: EYES_COLORS[getRandomElement(EYES_COLORS)]
+      name: getRandomElement(WIZARD_NAMES),
+      surname: getRandomElement(WIZARD_SURNAMES),
+      coat: getRandomElement(COAT_COLORS),
+      eye: getRandomElement(EYES_COLORS)
     };
 
     arr[i] = wizard;
