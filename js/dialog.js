@@ -14,8 +14,6 @@
     }
   });
 
-  // var menu = document.querySelector('.setup');
-
   closeButton.addEventListener('click', function () {
     window.util.closeMenu(window.setup.menu);
   });
