@@ -40,19 +40,19 @@
 
   var similarListElement = menu.querySelector('.setup-similar-list');
 
-  var getWizards = function (arr) {
-    for (var i = 0; i < 4; i++) {
-      var wizard = {
-        name: window.util.getRandomElement(WIZARD_NAMES),
-        surname: window.util.getRandomElement(WIZARD_SURNAMES),
-        coat: window.util.getRandomElement(COAT_COLORS),
-        eye: window.util.getRandomElement(EYES_COLORS)
-      };
+  // var getWizards = function (arr) {
+  //   for (var i = 0; i < 4; i++) {
+  //     var wizard = {
+  //       name: window.util.getRandomElement(WIZARD_NAMES),
+  //       surname: window.util.getRandomElement(WIZARD_SURNAMES),
+  //         coat: window.util.getRandomElement(COAT_COLORS),
+  //       eye: window.util.getRandomElement(EYES_COLORS)
+  //    };
 
-      arr[i] = wizard;
-    }
-    return arr;
-  };
+  //   arr[i] = wizard;
+  //  }
+  // return arr;
+  //  };
 
   var wizards = [];
 
