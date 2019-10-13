@@ -1,28 +1,6 @@
 'use strict';
 
 (function () {
-  var WIZARD_NAMES = [
-    'Иван',
-    'Хуан Себастьян',
-    'Мария',
-    'Кристоф',
-    'Виктор',
-    'Юлия',
-    'Люпита',
-    'Вашингтон'
-  ];
-
-  var WIZARD_SURNAMES = [
-    'да Марья',
-    'Верон',
-    'Мирабелла',
-    'Вальц',
-    'Онопко',
-    'Топольницкая',
-    'Нионго',
-    'Ирвинг'
-  ];
-
   var COAT_COLORS = [
     'rgb(101, 137, 164)',
     'rgb(241, 43, 107)',
@@ -40,24 +18,6 @@
 
   var similarListElement = menu.querySelector('.setup-similar-list');
 
-  var getWizards = function (arr) {
-    for (var i = 0; i < 4; i++) {
-      var wizard = {
-        name: window.util.getRandomElement(WIZARD_NAMES),
-        surname: window.util.getRandomElement(WIZARD_SURNAMES),
-        coat: window.util.getRandomElement(COAT_COLORS),
-        eye: window.util.getRandomElement(EYES_COLORS)
-      };
-
-      arr[i] = wizard;
-    }
-    return arr;
-  };
-
-  var wizards = [];
-
-  getWizards(wizards);
-
   var template = document
     .querySelector('#similar-wizard-template')
     .content.querySelector('.setup-similar-item');
@@ -65,21 +25,27 @@
   var renderWizard = function (wizardItem) {
     var wizardElement = template.cloneNode(true);
     wizardElement.querySelector('.setup-similar-label').textContent =
-      wizardItem.name + ' ' + wizardItem.surname;
-    wizardElement.querySelector('.wizard-coat').style.fill = wizardItem.coat;
-    wizardElement.querySelector('.wizard-eyes').style.fill = wizardItem.eye;
+      wizardItem.name;
+    wizardElement.querySelector('.wizard-coat').style.fill =
+      wizardItem.colorCoat;
+    wizardElement.querySelector('.wizard-eyes').style.fill =
+      wizardItem.colorEyes;
 
     return wizardElement;
   };
 
-  var fragment = document.createDocumentFragment();
+  var successHandler = function (wizard) {
+    var fragment = document.createDocumentFragment();
 
-  for (var i = 0; i < wizards.length; i++) {
-    fragment.appendChild(renderWizard(wizards[i]));
-  }
-  similarListElement.appendChild(fragment);
+    for (var i = 0; i < 4; i++) {
+      fragment.appendChild(renderWizard(window.util.getRandomElement(wizard)));
+    }
+    similarListElement.appendChild(fragment);
 
-  menu.querySelector('.setup-similar').classList.remove('hidden');
+    menu.querySelector('.setup-similar').classList.remove('hidden');
+  };
+
+  window.load(successHandler, window.backend.errorHandler);
 
   var wizard = menu.querySelector('.setup-wizard');
 

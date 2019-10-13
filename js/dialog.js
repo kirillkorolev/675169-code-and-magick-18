@@ -14,8 +14,6 @@
     }
   });
 
-  // var menu = document.querySelector('.setup');
-
   closeButton.addEventListener('click', function () {
     window.util.closeMenu(window.setup.menu);
   });
@@ -75,5 +73,20 @@
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
+  });
+
+  var form = window.setup.menu.querySelector('.setup-wizard-form');
+
+  var onSuccessSaveHandler = function () {
+    window.setup.menu.classList.add('hidden');
+  };
+
+  form.addEventListener('submit', function (evt) {
+    window.save(
+        new FormData(form),
+        onSuccessSaveHandler,
+        window.backend.errorHandler
+    );
+    evt.preventDefault();
   });
 })();
